@@ -28,7 +28,12 @@ namespace razor_page_practice.Pages.Students
                 return NotFound();
             }
 
-            var student = await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
+            Student? student = await _context
+                .Students.Include(x => x.Enrollments)
+                .ThenInclude(e => e.Course)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
+            //Student? student = await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
             if (student == null)
             {
                 return NotFound();
