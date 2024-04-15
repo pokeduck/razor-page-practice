@@ -16,13 +16,13 @@ namespace ContosoUniversity.Models
     {
         [Key]
         public int EnrollmentID { get; set; }
-        public int CourseID { get; set; }
+        public int CourseID { get; set; } //FK
         public int StudentID { get; set; }
 
         [DisplayFormat(NullDisplayText = "No grade")]
         public Grade? Grade { get; set; }
 
-        public Course Course { get; set; }
+        public Course Course { get; set; } //Nav. Property
 
         public Student Student { get; set; }
     }
