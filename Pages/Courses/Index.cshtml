@@ -1,0 +1,56 @@
+@page
+@model ContosoUniversity.Pages.Courses.IndexModel;
+
+@{
+    ViewData["Title"] = "Courses Courses";
+}
+
+<h1>Courses</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>    
+            <th>
+                @Html.DisplayNameFor(model => model.CourseVMs.First().CourseID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseVMs.First().Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseVMs[0].Credits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseVMs[0].DepartmentName)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.CourseVMs) {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => item.CourseID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Credits)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CourseID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CourseID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CourseID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
