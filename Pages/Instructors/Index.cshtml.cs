@@ -55,7 +55,7 @@ namespace razor_page_practice.Pages.Instructors
                 InstructorData.Enrollments = Enrollments;
             }
 
-            Instructor = await _context.Instructors.ToListAsync();
+
         }
     }
 }
