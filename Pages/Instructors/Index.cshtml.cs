@@ -46,7 +46,7 @@ namespace razor_page_practice.Pages.Instructors
             }
             if (courseID != null)
             {
-                courseID = courseID.Value;
+                CourseID = courseID.Value;
                 IEnumerable<Enrollment> Enrollments = await _context
                     .Enrollments.Where(x => x.CourseID == courseID)
                     .Include(i => i.Student)
@@ -54,8 +54,6 @@ namespace razor_page_practice.Pages.Instructors
 
                 InstructorData.Enrollments = Enrollments;
             }
-
-
         }
     }
 }
